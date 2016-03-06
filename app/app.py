@@ -1,4 +1,6 @@
-from ffmpeg import FFmpeg, Sound
+import sys
+
+from ffmpeg import FFmpeg
 
 class Application(object):
     app_config = None
@@ -7,5 +9,4 @@ class Application(object):
         Application.app_config = config
         print "app is running"
         ffmpeg = FFmpeg(config.FFMPEG_PATH)
-        sound = Sound('/Users/ihor-pyvovarnyk/Documents/Workspace/oae-sound-processing-tool/resources/sound.wav')
-        ffmpeg.convert(sound, 'mp3')
+        ffmpeg.test()
