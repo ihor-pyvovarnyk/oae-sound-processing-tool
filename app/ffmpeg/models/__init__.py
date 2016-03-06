@@ -1,2 +1,2 @@
-from .ffmpeg import FFmpeg
-from .sound import Sound
+from .ffmpegModel import FfmpegModel
+from .soundModel import SoundModel

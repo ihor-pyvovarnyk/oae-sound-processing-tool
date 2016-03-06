@@ -1,2 +1,1 @@
-from .models import FFmpeg
-from .models import Sound
+from .facade import Facade as FFmpeg
