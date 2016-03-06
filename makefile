@@ -5,3 +5,6 @@ setup:
 
 run:
 	python app
+
+clearPyc:
+	find . -type f -name '*.pyc' -delete
