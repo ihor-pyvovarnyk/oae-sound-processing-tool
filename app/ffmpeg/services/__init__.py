@@ -1,1 +1,1 @@
-from .commandBuilderService import CommandBuilderService
+from .command_builder_service import CommandBuilderService
