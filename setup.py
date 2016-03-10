@@ -17,6 +17,7 @@ setup(
     license = license,
     install_requires = [
         'scipy',
-        'numpy'
+        'numpy',
+        'pysox'
     ]
 )
