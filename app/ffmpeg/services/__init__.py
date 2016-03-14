@@ -1,1 +1,3 @@
 from .command_builder_service import CommandBuilderService
+from .schemas_provider_service import SchemasProviderService
+from .schema_compiler_service import SchemaCompilerService

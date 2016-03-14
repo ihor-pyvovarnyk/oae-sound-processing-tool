@@ -1,5 +1,5 @@
 class BaseService(object):
     def __init__(self, config):
         self.config = config
-    def boot(self):
+    def bootstrap(self):
         pass

@@ -8,5 +8,9 @@ class Application(object):
     def run(config):
         Application.app_config = config
         print "app is running"
-        ffmpeg = FFmpeg(config.FFMPEG_PATH)
-        ffmpeg.test()
+        base_path = '/Users/ihor-pyvovarnyk/Documents/Workspace/oae-sound-processing-tool/resources'
+        FFmpeg.set_ffmpeg_home(config.FFMPEG_PATH)
+        FFmpeg.command()\
+            .option('i', filename = '%s/in1.wav' % base_path)\
+            .option('out', filename = '%s/out1.mp3' % base_path)\
+            .execute()

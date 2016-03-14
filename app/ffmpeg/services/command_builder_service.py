@@ -1,12 +1,12 @@
 import subprocess as sp
 
-from .base_service import BaseService
+from ._base_service import BaseService
 
 class CommandBuilderService(BaseService):
     def __init__(self, config):
         super(CommandBuilderService, self).__init__(config)
         self.command_parts_stack = []
-    def boot(self):
+    def bootstrap(self):
         pass
     def push(self, command_part):
         self.command_parts_stack.append(command_part)
