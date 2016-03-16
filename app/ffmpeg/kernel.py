@@ -4,16 +4,29 @@ from .services import SchemaCompilerService
 from .services import SchemasProviderService
 
 class Kernel(object):
+    original_methods = ['__init__', 'bootstrap' 'execute', 'option',
+        'has_option']
     def __init__(self, ffmpeg_home_dir):
         self.ffmpeg_home = ffmpeg_home_dir
         self.command_builder_service = CommandBuilderService(config)
         self.schema_compiler_service = SchemaCompilerService()
         self.schemas_provider_service = SchemasProviderService()
         self.options_stack = []
+    def __getattr__(self, name):
+        if name in self.__class__.original_methods:
+            return self.__dict__[name]
+        elif self.has_option(name):
+            def option_callback(**kwargs):
+                return self.option(name, **kwargs)
+            return option_callback
+        else:
+            raise AttributeError, name
     def bootstrap(self):
         self.command_builder_service.bootstrap()
         self.schema_compiler_service.bootstrap()
         self.schemas_provider_service.bootstrap()
+    def has_option(self, option_name):
+        return bool(self.schemas_provider_service.schema(option_name))
     def option(self, name, **kwargs):
         schema = self.schemas_provider_service.schema(name)
         if not schema:
