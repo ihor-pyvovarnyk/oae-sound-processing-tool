@@ -1,6 +1,6 @@
 all: run
 
-setup:
+install:
 	pip install -r requirements.txt
 
 run:
