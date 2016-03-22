@@ -41,4 +41,4 @@ class Kernel(object):
             self.command_builder_service.push(part)
         print self.command_builder_service.command_parts_stack
         self.command_builder_service.run()
-        self.command_stack = []
+        self.options_stack = []
