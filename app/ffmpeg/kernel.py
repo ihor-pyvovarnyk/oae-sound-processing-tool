@@ -1,11 +1,11 @@
+import functools
+
 from . import config
 from .services import CommandBuilderService
 from .services import SchemaCompilerService
 from .services import SchemasProviderService
 
 class Kernel(object):
-    original_methods = ['__init__', 'bootstrap' 'execute', 'option',
-        'has_option']
     def __init__(self, ffmpeg_home_dir):
         self.ffmpeg_home = ffmpeg_home_dir
         self.command_builder_service = CommandBuilderService(config)
@@ -13,12 +13,10 @@ class Kernel(object):
         self.schemas_provider_service = SchemasProviderService()
         self.options_stack = []
     def __getattr__(self, name):
-        if name in self.__class__.original_methods:
+        if name in self.__dict__:
             return self.__dict__[name]
         elif self.has_option(name):
-            def option_callback(**kwargs):
-                return self.option(name, **kwargs)
-            return option_callback
+            return functools.partial(self.option, name)
         else:
             raise AttributeError, name
     def bootstrap(self):
