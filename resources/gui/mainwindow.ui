@@ -6,68 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>575</width>
-    <height>379</height>
+    <width>572</width>
+    <height>342</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>10</y>
-      <width>401</width>
-      <height>211</height>
-     </rect>
-    </property>
-    <property name="tabPosition">
-     <enum>QTabWidget::North</enum>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <property name="tabsClosable">
-     <bool>false</bool>
-    </property>
-    <property name="movable">
-     <bool>false</bool>
-    </property>
-    <widget class="QWidget" name="tab">
-     <property name="contextMenuPolicy">
-      <enum>Qt::CustomContextMenu</enum>
-     </property>
-     <attribute name="title">
-      <string>Tab 1</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
-     <property name="accessibleName">
-      <string/>
-     </property>
-     <property name="accessibleDescription">
-      <string/>
-     </property>
-     <attribute name="title">
-      <string>Page</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-    </widget>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>260</y>
+      <x>180</x>
+      <y>240</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -76,22 +27,52 @@
      <string>PushButton</string>
     </property>
    </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>571</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Select file</string>
+    </property>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>411</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="selectFile">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>20</y>
+       <width>113</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Select File</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>575</width>
+     <width>572</width>
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuSound_Processing_Tool">
-    <property name="title">
-     <string>Sound Processing Tool</string>
-    </property>
-   </widget>
-   <addaction name="menuSound_Processing_Tool"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
