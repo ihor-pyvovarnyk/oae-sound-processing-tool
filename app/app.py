@@ -7,11 +7,12 @@ from app_ui import AppUi
 from ffmpeg import FFmpeg
 
 class Application(object):
-    @staticmethod
-    def run(config):
-        app = QApplication(sys.argv)
-        window = AppWindow()
-        ui = AppUi()
-        ui.setupUi(window)
-        window.show()
-        sys.exit(app.exec_())
+    def __init__(self, config):
+        self.app_config = config
+        self.qapp = QApplication(sys.argv)
+        self.window = AppWindow()
+        self.ui = AppUi()
+    def run(self):
+        self.ui.setupUi(self.window)
+        self.window.show()
+        sys.exit(self.qapp.exec_())
