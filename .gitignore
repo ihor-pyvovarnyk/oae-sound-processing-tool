@@ -7,3 +7,9 @@ lib
 *.pyc
 pip-selfcheck.json
 *.autosave
+resources/in
+!resources/in/.gitkeep
+resources/out
+!resources/out/.gitkeep
+resources/temp
+!resources/temp/.gitkeep
