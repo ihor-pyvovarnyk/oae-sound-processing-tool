@@ -3,7 +3,7 @@ import sys
 from PyQt4.QtGui import QApplication
 from app_window import AppWindow
 from app_ui import AppUi
-from dispatcher import Dispatcher
+from connector import Connector
 import modules
 
 from ffmpeg import FFmpeg
@@ -11,24 +11,37 @@ from ffmpeg import FFmpeg
 class Application(object):
     def __init__(self, config):
         self.app_config = config
-        self.dispatcher = Dispatcher()
+        self.connector = Connector()
 
         self.qapp = QApplication(sys.argv)
         self.window = AppWindow()
-        self.ui = AppUi(self.dispatcher)
+        self.ui = AppUi(self.connector)
 
-        self.selected_file_module = modules.SelectedFile(self.dispatcher)
+        self.file_discoverer_module = modules.FileDiscoverer(self.connector)
+        self.selected_file_module = modules.SelectedFile(self.connector)
+        self.converter_module = modules.Converter(self.connector)
 
     def run(self):
-        self.setup_dispatcher()
+        FFmpeg.set_ffmpeg_home(self.app_config.FFMPEG_PATH)
+        self.setup_connector()
         self.setup_view()
 
-    def setup_dispatcher(self):
-        d = self.dispatcher
-        d.dispatch_action('select_file', self.selected_file_module.select_file)
-        d.dispatch_render('show_selected_file_path', self.ui.show_selected_file_path)
+    def setup_connector(self):
+        c = self.connector
+        c.register_source('app_config', self.app_config)
+        c.register_source('ui', self.ui)
+        c.register_source('ffmpeg', FFmpeg)
+        c.register_source('file_discoverer', self.file_discoverer_module)
+        c.register_source('selected_file', self.selected_file_module)
+        c.register_source('converter', self.converter_module)
 
     def setup_view(self):
         self.ui.setupUi(self.window)
+        self.setup_modules()
         self.window.show()
         sys.exit(self.qapp.exec_())
+
+    def setup_modules(self):
+        self.file_discoverer_module.setup()
+        self.selected_file_module.setup()
+        self.converter_module.setup()
