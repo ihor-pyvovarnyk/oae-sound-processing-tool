@@ -3,8 +3,7 @@ import subprocess as sp
 from ._base_service import BaseService
 
 class CommandBuilderService(BaseService):
-    def __init__(self, config):
-        super(CommandBuilderService, self).__init__(config)
+    def __init__(self):
         self.command_parts_stack = []
     def bootstrap(self):
         pass

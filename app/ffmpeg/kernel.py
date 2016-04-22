@@ -1,6 +1,5 @@
 import functools
 
-from . import config
 from .services import CommandBuilderService
 from .services import SchemaCompilerService
 from .services import SchemasProviderService
@@ -8,7 +7,7 @@ from .services import SchemasProviderService
 class Kernel(object):
     def __init__(self, ffmpeg_home_dir):
         self.ffmpeg_home = ffmpeg_home_dir
-        self.command_builder_service = CommandBuilderService(config)
+        self.command_builder_service = CommandBuilderService()
         self.schema_compiler_service = SchemaCompilerService()
         self.schemas_provider_service = SchemasProviderService()
         self.options_stack = []
