@@ -18,6 +18,8 @@ setup(
     install_requires = [
         'scipy',
         'numpy',
-        'pysox'
+        'matplotlib',
+        'pysox',
+        'python-magic'
     ]
 )

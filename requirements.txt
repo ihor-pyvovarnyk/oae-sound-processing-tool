@@ -1,3 +1,5 @@
 scipy
 numpy
+matplotlib
 pysox
+python-magic=0.4.11
