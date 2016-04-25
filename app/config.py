@@ -12,16 +12,19 @@ ALLOWED_FORMATS = {
     'wav': {
         'label': 'wav',
         'mime': 'audio/x-wav',
-        'extensions': ['wav']
+        'extensions': ['wav'],
+        'codecs': []
     },
     'mp4': {
         'label': 'mp4',
         'mime': 'video/mp4',
-        'extensions': ['mp4']
+        'extensions': ['mp4'],
+        'codecs': ['libx264']
     },
     'mp3': {
         'label': 'mp3',
         'mime': 'audio/mpeg',
-        'extensions': ['mp3']
+        'extensions': ['mp3'],
+        'codecs': ['libmp3lame', 'libshine']
     }
 }

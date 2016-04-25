@@ -12,6 +12,7 @@ class AppUi(Ui_MainWindow):
     def setupUi(self, MainWindow):
         super(AppUi, self).setupUi(MainWindow)
         self.select_file_btn.clicked.connect(self.own_select_file_dialog)
+        self.fill_file_info()
         self.convert_target_ext_combo_box.activated.connect(self.change_target_extension_handler)
         self.invalid_file_label.setVisible(False)
         self.convert_btn.clicked.connect(self.convert_btn_handler)
@@ -24,6 +25,7 @@ class AppUi(Ui_MainWindow):
         file_path = QFileDialog.getOpenFileName(self.centralWidget,
             'Open sound', '/home/ihor-pyvovarnyk/', 'Sounds (%s)' % exts)
         self.connector.selected_file.select_file(str(file_path))
+        self.connector.file_info.file_selected()
 
     def change_target_extension_handler(self, index):
         text = self.convert_target_ext_combo_box.currentText()
@@ -55,6 +57,17 @@ class AppUi(Ui_MainWindow):
         self.convert_target_ext_combo_box.setEnabled(True)
         self.convert_btn.setEnabled(True)
 
+    def fill_file_info(self, file_name='', frequency='',
+                       duration='', bitrate='', channels=''):
+        self.info_file_name_value.setText(str(file_name))
+        self.info_sampling_frequency_value.setText(self._value_text(str(frequency), 'kHz'))
+        self.info_bitrate_value.setText(self._value_text(str(bitrate), ' kbps'))
+        self.info_duration_value.setText(self._value_text(str(duration), ' seconds'))
+        self.info_channels_value.setText(str(channels))
+
+    def _value_text(self, text, after):
+        return (text + after) if text else ''
+
     def handle_invalid_file(self):
         self.invalid_file_label.setVisible(True)
         self.disable_all()
@@ -66,7 +79,8 @@ class AppUi(Ui_MainWindow):
     def fill_extensions_combo_box(self, extensions):
         self.convert_target_ext_combo_box.clear()
         self.convert_target_ext_combo_box.addItems(extensions)
-        self.change_target_extension_handler(1)
+        if len(extensions):
+            self.change_target_extension_handler(1)
 
     def set_convert_btn_state(self, state):
         self.convert_btn.setEnabled(state)

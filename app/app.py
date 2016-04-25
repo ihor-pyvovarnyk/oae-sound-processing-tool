@@ -4,6 +4,7 @@ from PyQt4.QtGui import QApplication
 from app_window import AppWindow
 from app_ui import AppUi
 from connector import Connector
+import pysox
 import modules
 
 from ffmpeg import FFmpeg
@@ -18,6 +19,7 @@ class Application(object):
         self.ui = AppUi(self.connector)
 
         self.file_discoverer_module = modules.FileDiscoverer(self.connector)
+        self.file_info_module = modules.FileInfo(self.connector)
         self.selected_file_module = modules.SelectedFile(self.connector)
         self.converter_module = modules.Converter(self.connector)
 
@@ -31,7 +33,9 @@ class Application(object):
         c.register_source('app_config', self.app_config)
         c.register_source('ui', self.ui)
         c.register_source('ffmpeg', FFmpeg)
+        c.register_source('pysox', pysox)
         c.register_source('file_discoverer', self.file_discoverer_module)
+        c.register_source('file_info', self.file_info_module)
         c.register_source('selected_file', self.selected_file_module)
         c.register_source('converter', self.converter_module)
 
