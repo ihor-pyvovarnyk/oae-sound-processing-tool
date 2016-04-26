@@ -22,6 +22,7 @@ class Application(object):
         self.file_info_module = modules.FileInfo(self.connector)
         self.selected_file_module = modules.SelectedFile(self.connector)
         self.converter_module = modules.Converter(self.connector)
+        self.player_module = modules.Player(self.connector)
 
     def run(self):
         FFmpeg.set_ffmpeg_home(self.app_config.FFMPEG_PATH)
@@ -38,6 +39,7 @@ class Application(object):
         c.register_source('file_info', self.file_info_module)
         c.register_source('selected_file', self.selected_file_module)
         c.register_source('converter', self.converter_module)
+        c.register_source('player', self.player_module)
 
     def setup_view(self):
         self.ui.setupUi(self.window)
@@ -47,5 +49,7 @@ class Application(object):
 
     def setup_modules(self):
         self.file_discoverer_module.setup()
+        self.file_info_module.setup()
         self.selected_file_module.setup()
         self.converter_module.setup()
+        self.player_module.setup()

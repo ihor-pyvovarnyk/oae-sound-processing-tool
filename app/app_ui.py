@@ -2,12 +2,13 @@ from PyQt4.QtGui import QFileDialog
 from PyQt4 import QtCore
 from gui import Ui_MainWindow
 
-import time
+
 
 class AppUi(Ui_MainWindow):
     def __init__(self, connector):
         super(AppUi, self).__init__()
         self.connector = connector
+        self.player_timer = QtCore.QTimer()
 
     def setupUi(self, MainWindow):
         super(AppUi, self).setupUi(MainWindow)
@@ -18,14 +19,45 @@ class AppUi(Ui_MainWindow):
         self.convert_btn.clicked.connect(self.convert_btn_handler)
         self.convert_status_label.setText('')
         self.disable_all()
+        self.play_btn.clicked.connect(self.play_handler)
+        self.pause_btn.clicked.connect(self.pause_handler)
+        self.stop_btn.clicked.connect(self.stop_handler)
+        self.player_slider.sliderPressed.connect(self.pause_handler)
+        self.player_slider.sliderReleased.connect(self.slider_drop)
+        self.player_timer.timeout.connect(self.connector.player.tick)
+        self.player_timer.setSingleShot(True)
+
+    def play_handler(self):
+        self.connector.player.play()
+
+    def pause_handler(self):
+        self.player_timer.stop()
+        self.connector.player.pause()
+
+    def stop_handler(self):
+        self.connector.player.stop()
+
+    def slider_drop(self):
+        position = self.player_slider.value()
+        self.connector.player.slide_to(int(position))
+        self.connector.player.play()
+
+    def player_tick(self, position):
+        self.move_player_slider(position)
+        self.player_timer.start(1000)
+
+    def move_player_slider(self, position):
+        self.player_slider.setValue(position)
 
     def own_select_file_dialog(self):
         exts = self.connector.file_discoverer.get_allowed_exetnsions()
         exts = '; '.join(map(lambda e: '*.%s' % e, exts))
         file_path = QFileDialog.getOpenFileName(self.centralWidget,
             'Open sound', '/home/ihor-pyvovarnyk/', 'Sounds (%s)' % exts)
-        self.connector.selected_file.select_file(str(file_path))
+        file_path = str(file_path)
+        self.connector.selected_file.select_file(file_path)
         self.connector.file_info.file_selected()
+        self.connector.player.set_file(file_path)
 
     def change_target_extension_handler(self, index):
         text = self.convert_target_ext_combo_box.currentText()
