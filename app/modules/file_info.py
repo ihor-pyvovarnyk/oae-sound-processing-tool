@@ -6,7 +6,7 @@ class FileInfo(BaseModule):
     def file_selected(self):
         file_path = self.connector.selected_file.file_path
         file_info = self.get_file_info(file_path)
-        self.connector.ui.fill_file_info(file_name = file_info['base_name'],
+        self.connector.ui.file_info.fill_file_info(file_name = file_info['base_name'],
             frequency = file_info['frequency'],
             bitrate = file_info['bitrate'],
             duration = file_info['duration'],

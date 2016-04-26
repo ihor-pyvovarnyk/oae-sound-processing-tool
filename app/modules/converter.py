@@ -14,7 +14,7 @@ class Converter(BaseModule):
         for key, fmt in allowed_formats.iteritems():
             for ext in fmt['extensions']:
                 exts.append(ext)
-        self.connector.ui.fill_extensions_combo_box(exts)
+        self.connector.ui.convert.fill_extensions_combo_box(exts)
 
     def select_target_extension(self, target_ext):
         self.target_extension = target_ext

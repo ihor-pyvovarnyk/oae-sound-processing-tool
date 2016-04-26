@@ -30,7 +30,7 @@ class Player(BaseModule):
                 self.file,
             ], stdout=sp.PIPE)
             self.is_playing = True
-            self.connector.ui.player_tick(
+            self.connector.ui.player.player_tick(
                 self.ticks_to_position(self.ticks))
 
     def pause(self):
@@ -46,14 +46,13 @@ class Player(BaseModule):
         if self.pipe:
             self.pause()
             self.ticks = 0
-            self.connector.ui.move_player_slider(0)
+            self.connector.ui.player.move_player_slider(0)
 
     def tick(self):
         if self.is_playing:
             if self.ticks < self.duration:
                 self.ticks += 1
-                print "TICK", self.ticks
-                self.connector.ui.player_tick(
+                self.connector.ui.player.player_tick(
                     min(100, self.ticks_to_position(self.ticks)))
             else:
                 self.stop()
