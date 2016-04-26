@@ -13,9 +13,10 @@ class SelectFile(BaseGuiComponent):
         file_path = QFileDialog.getOpenFileName(self.centralWidget,
             'Open sound', '/home/ihor-pyvovarnyk/', 'Sounds (%s)' % exts)
         file_path = str(file_path)
-        self.connector.selected_file.select_file(file_path)
-        self.connector.file_info.file_selected()
-        self.connector.player.set_file(file_path)
+        if file_path:
+            self.connector.selected_file.select_file(file_path)
+            self.connector.file_info.file_selected()
+            self.connector.player.set_file(file_path)
 
     def handle_invalid_file(self):
         self.invalid_file_label.setVisible(True)

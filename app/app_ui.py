@@ -42,6 +42,8 @@ class AppUi(Ui_MainWindow):
         self.player.add_element('player_slider', self.player_slider)
         self.player.setup_ui()
 
+        self.disable_all()
+
     def disable_all(self):
         self.select_file.disable_all()
         self.file_info.disable_all()
