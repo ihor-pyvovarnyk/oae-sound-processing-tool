@@ -243,6 +243,122 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Cut</string>
+     </attribute>
+     <widget class="QLabel" name="cut_audio_duration_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Audio duration:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cut_audio_duration_value">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>10</y>
+        <width>411</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>cut_audio_duration</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cut_start_from_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start from</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cut_start_from_edit">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>40</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cut_length_label">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>40</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Length</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cut_length_edit">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>40</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cut_btn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>113</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cut</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cut_status_label">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>70</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>cut_status_label</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cut_invalid_values_label">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>40</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Invalid values</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QPushButton" name="stop_btn">
     <property name="geometry">

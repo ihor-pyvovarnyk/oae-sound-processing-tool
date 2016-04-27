@@ -17,6 +17,7 @@ class SelectFile(BaseGuiComponent):
             self.connector.selected_file.select_file(file_path)
             self.connector.file_info.file_selected()
             self.connector.player.set_file(file_path)
+            self.connector.cutter.file_selected(file_path)
 
     def handle_invalid_file(self):
         self.invalid_file_label.setVisible(True)

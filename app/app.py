@@ -23,6 +23,7 @@ class Application(object):
         self.selected_file_module = modules.SelectedFile(self.connector)
         self.converter_module = modules.Converter(self.connector)
         self.player_module = modules.Player(self.connector)
+        self.cutter_module = modules.Cutter(self.connector)
 
     def run(self):
         FFmpeg.set_ffmpeg_home(self.app_config.FFMPEG_PATH)
@@ -40,6 +41,7 @@ class Application(object):
         c.register_source('selected_file', self.selected_file_module)
         c.register_source('converter', self.converter_module)
         c.register_source('player', self.player_module)
+        c.register_source('cutter', self.cutter_module)
 
     def setup_view(self):
         self.ui.setupUi(self.window)

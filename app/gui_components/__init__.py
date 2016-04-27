@@ -3,3 +3,4 @@ from .select_file import SelectFile
 from .file_info import FileInfo
 from .convert import Convert
 from .player import Player
+from .cut import Cut

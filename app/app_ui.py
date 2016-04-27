@@ -6,6 +6,7 @@ from gui_components import SelectFile
 from gui_components import FileInfo
 from gui_components import Convert
 from gui_components import Player
+from gui_components import Cut
 
 class AppUi(Ui_MainWindow):
     def __init__(self, connector):
@@ -15,6 +16,7 @@ class AppUi(Ui_MainWindow):
         self.file_info = FileInfo(self, connector)
         self.convert = Convert(self, connector)
         self.player = Player(self, connector)
+        self.cut = Cut(self, connector)
 
     def setupUi(self, MainWindow):
         super(AppUi, self).setupUi(MainWindow)
@@ -42,6 +44,17 @@ class AppUi(Ui_MainWindow):
         self.player.add_element('player_slider', self.player_slider)
         self.player.setup_ui()
 
+        self.cut.add_element('cut_audio_duration_label', self.cut_audio_duration_label)
+        self.cut.add_element('cut_audio_duration_value', self.cut_audio_duration_value)
+        self.cut.add_element('cut_start_from_label', self.cut_start_from_label)
+        self.cut.add_element('cut_start_from_edit', self.cut_start_from_edit)
+        self.cut.add_element('cut_length_label', self.cut_length_label)
+        self.cut.add_element('cut_length_edit', self.cut_length_edit)
+        self.cut.add_element('cut_invalid_values_label', self.cut_invalid_values_label)
+        self.cut.add_element('cut_btn', self.cut_btn)
+        self.cut.add_element('cut_status_label', self.cut_status_label)
+        self.cut.setup_ui()
+
         self.disable_all()
 
     def disable_all(self):
@@ -49,12 +62,14 @@ class AppUi(Ui_MainWindow):
         self.file_info.disable_all()
         self.convert.disable_all()
         self.player.disable_all()
+        self.cut.disable_all()
 
     def enable_all(self):
         self.select_file.enable_all()
         self.file_info.enable_all()
         self.convert.enable_all()
         self.player.enable_all()
+        self.cut.enable_all()
 
     def handle_invalid_file(self):
         self.select_file.handle_invalid_file()
