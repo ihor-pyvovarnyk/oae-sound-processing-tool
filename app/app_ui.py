@@ -7,6 +7,7 @@ from gui_components import FileInfo
 from gui_components import Convert
 from gui_components import Player
 from gui_components import Cut
+from gui_components import FftAnalysis
 
 class AppUi(Ui_MainWindow):
     def __init__(self, connector):
@@ -17,6 +18,7 @@ class AppUi(Ui_MainWindow):
         self.convert = Convert(self, connector)
         self.player = Player(self, connector)
         self.cut = Cut(self, connector)
+        self.fft_analysis = FftAnalysis(self, connector)
 
     def setupUi(self, MainWindow):
         super(AppUi, self).setupUi(MainWindow)
@@ -55,6 +57,22 @@ class AppUi(Ui_MainWindow):
         self.cut.add_element('cut_status_label', self.cut_status_label)
         self.cut.setup_ui()
 
+        self.fft_analysis.add_element('fft_audio_duration_label', self.fft_audio_duration_label)
+        self.fft_analysis.add_element('fft_audio_duration_value', self.fft_audio_duration_value)
+        self.fft_analysis.add_element('fft_start_from_label', self.fft_start_from_label)
+        self.fft_analysis.add_element('fft_start_from_edit', self.fft_start_from_edit)
+        self.fft_analysis.add_element('fft_length_label', self.fft_length_label)
+        self.fft_analysis.add_element('fft_length_edit', self.fft_length_edit)
+        self.fft_analysis.add_element('fft_invalid_values_label', self.fft_invalid_values_label)
+        self.fft_analysis.add_element('fft_window_size_label', self.fft_window_size_label)
+        self.fft_analysis.add_element('fft_window_size_edit', self.fft_window_size_edit)
+        self.fft_analysis.add_element('fft_overlap_size_label', self.fft_overlap_size_label)
+        self.fft_analysis.add_element('fft_overlap_size_edit', self.fft_overlap_size_edit)
+        self.fft_analysis.add_element('fft_overlap_error_label', self.fft_overlap_error_label)
+        self.fft_analysis.add_element('fft_analysis_btn', self.fft_analysis_btn)
+        self.fft_analysis.add_element('fft_analysis_status_label', self.fft_analysis_status_label)
+        self.fft_analysis.setup_ui()
+
         self.disable_all()
 
     def disable_all(self):
@@ -63,6 +81,7 @@ class AppUi(Ui_MainWindow):
         self.convert.disable_all()
         self.player.disable_all()
         self.cut.disable_all()
+        self.fft_analysis.disable_all()
 
     def enable_all(self):
         self.select_file.enable_all()
@@ -70,6 +89,7 @@ class AppUi(Ui_MainWindow):
         self.convert.enable_all()
         self.player.enable_all()
         self.cut.enable_all()
+        self.fft_analysis.enable_all()
 
     def handle_invalid_file(self):
         self.select_file.handle_invalid_file()

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>572</width>
-    <height>357</height>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,7 +78,7 @@
       <x>10</x>
       <y>130</y>
       <width>551</width>
-      <height>161</height>
+      <height>191</height>
      </rect>
     </property>
     <property name="layoutDirection">
@@ -356,6 +356,187 @@
       </property>
       <property name="text">
        <string>Invalid values</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>FFT analysis</string>
+     </attribute>
+     <widget class="QLabel" name="fft_start_from_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start from</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_invalid_values_label">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>40</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Invalid values</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_audio_duration_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Audio duration:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_audio_duration_value">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>10</y>
+        <width>411</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>cut_audio_duration</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fft_start_from_edit">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>40</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_length_label">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>40</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Length</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fft_length_edit">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>40</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_window_size_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FFT window size</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fft_window_size_edit">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>70</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>1024</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_overlap_size_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Overlap size</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fft_overlap_size_edit">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>100</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>512</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_overlap_error_label">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>100</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Invalid value</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="fft_analysis_btn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>113</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Analize</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fft_analysis_status_label">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>135</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
