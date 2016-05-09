@@ -8,9 +8,6 @@ class Cutter(BaseModule):
         super(Cutter, self).__init__(connector)
         self.duration = False
 
-    def setup(self):
-        pass
-
     def file_selected(self, file_path):
         info = self.connector.file_info.get_file_info(file_path)
         self.duration = info['duration']

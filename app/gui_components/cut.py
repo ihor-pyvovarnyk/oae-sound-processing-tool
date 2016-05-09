@@ -10,6 +10,7 @@ class Cut(BaseGuiComponent):
         self.cut_btn.clicked.connect(self.cut_handler)
 
     def cut_handler(self):
+        self.cut_invalid_values_label.setVisible(False)
         if self._validate_cut_values():
             self._prepare_cutting_ui()
             QTimer.singleShot(100, self._cut_btn_handler_callback)
@@ -18,18 +19,17 @@ class Cut(BaseGuiComponent):
 
     def _cut_btn_handler_callback(self):
         start = self._str_to_int(self.cut_start_from_edit.text(), 0)
-        length = self._str_to_int(self.cut_length_edit.text(), 0)
+        length = self._str_to_int(self.cut_length_edit.text(), 1)
         result = self.connector.cutter.cut(start, length)
         self._post_cutting_ui(result)
 
     def _validate_cut_values(self):
         start = self._str_to_int(self.cut_start_from_edit.text(), 0)
-        length = self._str_to_int(self.cut_length_edit.text(), 0)
+        length = self._str_to_int(self.cut_length_edit.text(), 1)
         return self.connector.cutter.duration is not False and\
             (start + length) <= self.connector.cutter.duration
 
     def _prepare_cutting_ui(self):
-        self.cut_invalid_values_label.setVisible(False)
         self._set_cut_btn_state(False)
         self._set_cut_status('Cutting')
 
