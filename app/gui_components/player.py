@@ -6,6 +6,7 @@ class Player(BaseGuiComponent):
     def __init__(self, parent_ui, connector):
         super(Player, self).__init__(parent_ui, connector)
         self.player_timer = QTimer()
+        self.tick_size = 1000
 
     def setup_ui(self):
         self.play_btn.clicked.connect(self.play_handler)
@@ -33,7 +34,19 @@ class Player(BaseGuiComponent):
 
     def player_tick(self, position):
         self.move_player_slider(position)
-        self.player_timer.start(1000)
+        self.player_timer.start(self.tick_size)
 
     def move_player_slider(self, position):
         self.player_slider.setValue(position)
+
+    def disable_all(self):
+        self.play_btn.setEnabled(False)
+        self.pause_btn.setEnabled(False)
+        self.stop_btn.setEnabled(False)
+        self.player_slider.setEnabled(False)
+
+    def enable_all(self):
+        self.play_btn.setEnabled(True)
+        self.pause_btn.setEnabled(True)
+        self.stop_btn.setEnabled(True)
+        self.player_slider.setEnabled(True)
